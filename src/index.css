@@ -1,0 +1,19 @@
+:root {
+    --loginBg: #f0f2f5;
+    --loginBoxBg: white;
+    --bg: white;
+    --text: black;
+    --shareInput: white;
+    --sharePlaceholder:#727272;
+    --boxShadow: rgba(0, 0, 0, 0.68);
+  }
+  
+  [my-data-theme="dark"] {
+    --loginBg: #15202B;
+    --loginBoxBg: #273340;
+    --bg: #15202B;
+    --text: white;
+    --shareInput: #15202B;
+    --sharePlaceholder:#bdbbbb;
+    --boxShadow: rgba(255, 255, 255, 0.68);
+  }

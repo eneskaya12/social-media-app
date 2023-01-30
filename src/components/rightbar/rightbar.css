@@ -1,5 +1,7 @@
 .rightbar{
     flex: 3.5;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 .rightbarWrapper{
@@ -46,6 +48,7 @@
 
 .rightbarInfo{
     margin-bottom: 30px;
+    color: var(--text);
 }
 
 .rightbarInfoItem{
@@ -73,6 +76,8 @@
     flex-direction: column;
     margin-bottom: 20px;
     cursor: pointer;
+    color: var(--text);
+    background-color: var(--bg);
 }
 
 .rightbarFollowingImg{

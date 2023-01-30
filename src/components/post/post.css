@@ -1,8 +1,8 @@
 .post{
     width: 100%;
     border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-    box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+    -webkit-box-shadow: 0px 0px 16px -8px var(--boxShadow);
+    box-shadow: 0px 0px 16px -8px var(--boxShadow);
     margin: 30px 0;
 }
 

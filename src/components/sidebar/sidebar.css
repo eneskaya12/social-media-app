@@ -4,6 +4,8 @@
     overflow-y: scroll;
     position: sticky;
     top: 50px;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 ::-webkit-scrollbar{
@@ -32,6 +34,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    color: var(--text);
 }
 
 .sidebarIcon{

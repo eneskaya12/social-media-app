@@ -1,5 +1,7 @@
 .feed{
     flex: 5.5;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 .feedWrapper{
