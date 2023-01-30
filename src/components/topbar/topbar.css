@@ -95,6 +95,11 @@
     cursor: pointer;
 }
 
+.topbarTheme{
+    cursor: pointer;
+    position: relative;
+}
+
 .topbarLogout{
     margin-right: 15px;
     cursor: pointer;
@@ -102,9 +107,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.topbarLogoutText{
-    margin-left: 2px;
-    font-size: 18px;
 }

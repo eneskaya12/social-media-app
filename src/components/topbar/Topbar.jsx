@@ -60,12 +60,11 @@ export default function Topbar({ setIsThemeDark }) {
         <Link to={`/profile/${user?.username}`}>
           <img src={user?.profilePicture ? PF + user?.profilePicture : PF + "person/noAvatar.png"} alt="" className="topbarImg" />
         </Link>
+        <div className="topbarTheme" onClick={handleTheme}>
+          {isDark ? <LightMode /> : <DarkMode />}
+        </div>
         <div className="topbarLogout" onClick={handleLogout}>
           <Logout />
-          <span className="topbarLogoutText">Logout</span>
-        </div>
-        <div className="theme" onClick={handleTheme}>
-          {isDark ? <LightMode /> : <DarkMode />}
         </div>
       </div>
     </div>
