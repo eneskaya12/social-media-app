@@ -11,11 +11,13 @@ export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const [followed, setFollowed] = useState(currentUser.followings.includes(user?.id));
+  const [followed, setFollowed] = useState(null);
+
 
   useEffect(() => {
-    setFollowed(currentUser.followings.includes(user?.id));
+    setFollowed(currentUser?.followings.includes(user?._id));
   }, [currentUser, user]);
+
 
   useEffect(() => {
     const getFriends = async () => {
@@ -32,20 +34,20 @@ export default function Rightbar({ user }) {
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put("/users/" + user._id + "/unfollow", {
+        await axios.put("/users/" + user?._id + "/unfollow", {
           userId: currentUser._id,
         });
-        dispatch({ type: "UNFOLLOW", payload: user._id });
+        dispatch({ type: "UNFOLLOW", payload: user?._id });
       } else {
-        await axios.put("/users/" + user._id + "/follow", {
+        await axios.put("/users/" + user?._id + "/follow", {
           userId: currentUser._id,
         });
-        dispatch({ type: "FOLLOW", payload: user._id });
+        dispatch({ type: "FOLLOW", payload: user?._id });
       }
+      setFollowed(!followed);
     } catch (err) {
       console.log(err);
     }
-    setFollowed(!followed);
   };
 
   const HomeRightbar = () => {
@@ -71,7 +73,7 @@ export default function Rightbar({ user }) {
   const ProfileRightbar = () => {
     return (
       <>
-        {user.username !== currentUser.username && (
+        {user?.username !== currentUser?.username && (
           <button className="rightbarFollowButton" onClick={handleClick}>
             {followed ? "Unfollow" : "Follow"}
             {followed ? <Remove /> : <Add />}
@@ -81,18 +83,18 @@ export default function Rightbar({ user }) {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">{user.city}</span>
+            <span className="rightbarInfoValue">{user?.city}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">{user.from}</span>
+            <span className="rightbarInfoValue">{user?.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Relationship:</span>
             <span className="rightbarInfoValue">
-              {user.relationship === 1
+              {user?.relationship === 1
                 ? "Single"
-                : user.relationship === 2
+                : user?.relationship === 2
                 ? "Married"
                 : "-"}
             </span>
@@ -103,21 +105,21 @@ export default function Rightbar({ user }) {
           {friends.map((friend) => {
             return (
               <Link
-                to={"/profile/" + friend.username}
+                to={"/profile/" + friend?.username}
                 style={{ textDecoration: "none" }}
               >
                 <div className="rightbarFollowing">
                   <img
                     className="rightbarFollowingImg"
                     src={
-                      friend.profilePicture
-                        ? PF + friend.profilePicture
+                      friend?.profilePicture
+                        ? PF + friend?.profilePicture
                         : PF + "/person/noAvatar.png"
                     }
                     alt=""
                   />
                   <span className="rightbarFollowingName">
-                    {friend.username}
+                    {friend?.username}
                   </span>
                 </div>
               </Link>

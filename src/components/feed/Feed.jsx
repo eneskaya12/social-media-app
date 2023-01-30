@@ -18,12 +18,12 @@ export default function Feed({ username }) {
       }));
     };
     fetchPosts();
-  }, [username, user._id]);
+  }, [username, user]);
 
   return (
     <div className="feed">
       <div className="feedWrapper">
-        {username === user.username && <Share />}
+        {username === user?.username && <Share />}
         {posts.map(p => (
           <Post key={p._id} post={p} />
         ))}
