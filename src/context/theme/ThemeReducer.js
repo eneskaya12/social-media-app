@@ -1,4 +1,4 @@
-export const ThemeReducer = (state, action) => {
+const ThemeReducer = (state, action) => {
     switch (action.type) {
         case "CHANGE_THEME":
             return{
@@ -8,3 +8,5 @@ export const ThemeReducer = (state, action) => {
             return state;
     }
 };
+
+export default ThemeReducer;
