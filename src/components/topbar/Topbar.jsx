@@ -1,5 +1,5 @@
 import "./topbar.css";
-import { Search, Person, Chat, Notifications } from "@mui/icons-material";
+import { Search, Person, Chat, Notifications, Logout } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -8,6 +8,11 @@ export default function Topbar() {
 
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const handleLogout = () => {
+    localStorage.setItem("user", null);
+    window.location.reload();
+  };
 
   return (
     <div className="topbarContainer">
@@ -44,6 +49,10 @@ export default function Topbar() {
         <Link to={`/profile/${user?.username}`}>
           <img src={user?.profilePicture ? PF + user?.profilePicture : PF + "person/noAvatar.png"} alt="" className="topbarImg" />
         </Link>
+        <div className="topbarLogout" onClick={handleLogout}>
+          <Logout />
+          <span className="topbarLogoutText">Logout</span>
+        </div>
       </div>
     </div>
   )

@@ -94,3 +94,17 @@
     object-fit: cover;
     cursor: pointer;
 }
+
+.topbarLogout{
+    margin-right: 15px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topbarLogoutText{
+    margin-left: 2px;
+    font-size: 18px;
+}
