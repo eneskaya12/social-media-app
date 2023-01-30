@@ -1,18 +1,29 @@
 import "./topbar.css";
-import { Search, Person, Chat, Notifications, Logout } from "@mui/icons-material";
+import { Search, Person, Chat, Notifications, Logout, LightMode, DarkMode } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/auth/AuthContext";
+import { ThemeContext } from "../../context/theme/ThemeContext";
 
-export default function Topbar() {
+export default function Topbar({ setIsThemeDark }) {
 
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { isDark, dispatch } = useContext(ThemeContext);
 
   const handleLogout = () => {
     localStorage.setItem("user", null);
     window.location.reload();
   };
+
+  const handleTheme = async () => {
+    try {
+      await dispatch({ type: "CHANGE_THEME", payload: isDark ? false : true });
+      await setIsThemeDark(isDark ? false : true);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <div className="topbarContainer">
@@ -52,6 +63,9 @@ export default function Topbar() {
         <div className="topbarLogout" onClick={handleLogout}>
           <Logout />
           <span className="topbarLogoutText">Logout</span>
+        </div>
+        <div className="theme" onClick={handleTheme}>
+          {isDark ? <LightMode /> : <DarkMode />}
         </div>
       </div>
     </div>
