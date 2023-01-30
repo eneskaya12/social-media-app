@@ -2,7 +2,7 @@ import "./topbar.css";
 import { Search, Person, Chat, Notifications, Logout } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/auth/AuthContext";
 
 export default function Topbar() {
 
